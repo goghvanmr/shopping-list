@@ -19,6 +19,10 @@
 		6E24E0A4193AC70700543970 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E24E08C193AC70700543970 /* UIKit.framework */; };
 		6E24E0AC193AC70800543970 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6E24E0AA193AC70800543970 /* InfoPlist.strings */; };
 		6E24E0AE193AC70800543970 /* Shopping_ListTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E24E0AD193AC70800543970 /* Shopping_ListTests.m */; };
+		6E24E0B8193AC73E00543970 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E24E0B7193AC73E00543970 /* Main.storyboard */; };
+		6E24E0BF193AC89900543970 /* LYListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E24E0BE193AC89900543970 /* LYListViewController.m */; };
+		6E24E0C2193ACC8700543970 /* LYItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E24E0C1193ACC8700543970 /* LYItem.m */; };
+		6E642AAE193B83020055A293 /* seed.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6E642AAD193B83020055A293 /* seed.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +52,12 @@
 		6E24E0A9193AC70800543970 /* Shopping ListTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Shopping ListTests-Info.plist"; sourceTree = "<group>"; };
 		6E24E0AB193AC70800543970 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6E24E0AD193AC70800543970 /* Shopping_ListTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Shopping_ListTests.m; sourceTree = "<group>"; };
+		6E24E0B7193AC73E00543970 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../Main.storyboard; sourceTree = "<group>"; };
+		6E24E0BD193AC89900543970 /* LYListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYListViewController.h; sourceTree = "<group>"; };
+		6E24E0BE193AC89900543970 /* LYListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYListViewController.m; sourceTree = "<group>"; };
+		6E24E0C0193ACC8700543970 /* LYItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYItem.h; sourceTree = "<group>"; };
+		6E24E0C1193ACC8700543970 /* LYItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYItem.m; sourceTree = "<group>"; };
+		6E642AAD193B83020055A293 /* seed.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = seed.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +117,9 @@
 		6E24E08E193AC70700543970 /* Shopping List */ = {
 			isa = PBXGroup;
 			children = (
+				6E24E0B7193AC73E00543970 /* Main.storyboard */,
+				6E24E0C3193ACC8B00543970 /* Models */,
+				6E24E0BC193AC7CA00543970 /* Controllers */,
 				6E24E097193AC70700543970 /* LYAppDelegate.h */,
 				6E24E098193AC70700543970 /* LYAppDelegate.m */,
 				6E24E09A193AC70700543970 /* Images.xcassets */,
@@ -142,6 +155,25 @@
 				6E24E0AA193AC70800543970 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6E24E0BC193AC7CA00543970 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				6E24E0BD193AC89900543970 /* LYListViewController.h */,
+				6E24E0BE193AC89900543970 /* LYListViewController.m */,
+				6E642AAD193B83020055A293 /* seed.plist */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		6E24E0C3193ACC8B00543970 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6E24E0C0193ACC8700543970 /* LYItem.h */,
+				6E24E0C1193ACC8700543970 /* LYItem.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,6 +252,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E24E0B8193AC73E00543970 /* Main.storyboard in Resources */,
+				6E642AAE193B83020055A293 /* seed.plist in Resources */,
 				6E24E093193AC70700543970 /* InfoPlist.strings in Resources */,
 				6E24E09B193AC70700543970 /* Images.xcassets in Resources */,
 			);
@@ -242,6 +276,8 @@
 			files = (
 				6E24E095193AC70700543970 /* main.m in Sources */,
 				6E24E099193AC70700543970 /* LYAppDelegate.m in Sources */,
+				6E24E0BF193AC89900543970 /* LYListViewController.m in Sources */,
+				6E24E0C2193ACC8700543970 /* LYItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,6 +474,7 @@
 				6E24E0B3193AC70800543970 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6E24E0B4193AC70800543970 /* Build configuration list for PBXNativeTarget "Shopping ListTests" */ = {
 			isa = XCConfigurationList;
@@ -446,6 +483,7 @@
 				6E24E0B6193AC70800543970 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
