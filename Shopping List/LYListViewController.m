@@ -46,6 +46,13 @@ static NSString *CellIdentifier = @"Cell Identifier";
     // Dispose of any resources that can be recreated.
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    UINavigationController *nc = (UINavigationController *)segue.destinationViewController;
+    LYAddItemViewController *destination = [nc.viewControllers firstObject];
+    
+    destination.delegate = self;
+}
+
 #pragma mark - NSCoding
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
@@ -80,7 +87,21 @@ static NSString *CellIdentifier = @"Cell Identifier";
     return cell;
 }
 
-#pragma  mark - Private Methods
+#pragma mark - LYAddItemViewControllerDelegate
+
+- (void)controller:(LYAddItemViewController *)controller didSaveItemWithName:(NSString *)name andPrice:(float)price {
+    LYItem *item = [LYItem createItemWithName:name andPrice:price];
+    
+    [self.items addObject:item];
+    
+    NSIndexPath *newIndexPath = [NSIndexPath indexPathForItem:([self.items count]-1) inSection:0];
+    [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+    
+    [self saveItems];
+}
+
+
+#pragma mark - Private Methods
 
 - (void)saveItems {
     NSString *filePath = [self pathForItems];
