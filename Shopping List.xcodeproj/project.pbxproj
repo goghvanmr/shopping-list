@@ -23,6 +23,7 @@
 		6E24E0BF193AC89900543970 /* LYListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E24E0BE193AC89900543970 /* LYListViewController.m */; };
 		6E24E0C2193ACC8700543970 /* LYItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E24E0C1193ACC8700543970 /* LYItem.m */; };
 		6E642AAE193B83020055A293 /* seed.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6E642AAD193B83020055A293 /* seed.plist */; };
+		6EF57E44193C7028003E89DC /* LYAddItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EF57E43193C7028003E89DC /* LYAddItemViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		6E24E0C0193ACC8700543970 /* LYItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYItem.h; sourceTree = "<group>"; };
 		6E24E0C1193ACC8700543970 /* LYItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYItem.m; sourceTree = "<group>"; };
 		6E642AAD193B83020055A293 /* seed.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = seed.plist; sourceTree = "<group>"; };
+		6EF57E42193C7028003E89DC /* LYAddItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYAddItemViewController.h; sourceTree = "<group>"; };
+		6EF57E43193C7028003E89DC /* LYAddItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYAddItemViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +126,7 @@
 				6E24E097193AC70700543970 /* LYAppDelegate.h */,
 				6E24E098193AC70700543970 /* LYAppDelegate.m */,
 				6E24E09A193AC70700543970 /* Images.xcassets */,
+				6E642AAD193B83020055A293 /* seed.plist */,
 				6E24E08F193AC70700543970 /* Supporting Files */,
 			);
 			path = "Shopping List";
@@ -162,7 +166,8 @@
 			children = (
 				6E24E0BD193AC89900543970 /* LYListViewController.h */,
 				6E24E0BE193AC89900543970 /* LYListViewController.m */,
-				6E642AAD193B83020055A293 /* seed.plist */,
+				6EF57E42193C7028003E89DC /* LYAddItemViewController.h */,
+				6EF57E43193C7028003E89DC /* LYAddItemViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -276,6 +281,7 @@
 			files = (
 				6E24E095193AC70700543970 /* main.m in Sources */,
 				6E24E099193AC70700543970 /* LYAppDelegate.m in Sources */,
+				6EF57E44193C7028003E89DC /* LYAddItemViewController.m in Sources */,
 				6E24E0BF193AC89900543970 /* LYListViewController.m in Sources */,
 				6E24E0C2193ACC8700543970 /* LYItem.m in Sources */,
 			);

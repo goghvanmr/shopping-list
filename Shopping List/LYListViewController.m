@@ -33,9 +33,11 @@ static NSString *CellIdentifier = @"Cell Identifier";
 {
     [super viewDidLoad];
     
-    NSLog(@"Items -> %@", self.items);
-    
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CellIdentifier];
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                                                         target:self
+                                                                                         action:@selector(addItem:)];
 }
 
 - (void)didReceiveMemoryWarning
@@ -100,6 +102,12 @@ static NSString *CellIdentifier = @"Cell Identifier";
     NSString *documents = [paths lastObject];
     
     return [documents stringByAppendingPathComponent:@"items.plist"];
+}
+
+- (void)addItem:(id)sender {
+    // Do Nothing
+    NSLog(@"Add button tapper");
+    [self performSegueWithIdentifier:@"add_item_from_list" sender:self];
 }
 
 @end
