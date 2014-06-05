@@ -10,11 +10,21 @@
 
 #import "LYItem.h"
 
+@protocol LYEditItemViewControllerDelegate;
+
 @interface LYEditItemViewController : UIViewController
 
 @property (nonatomic, strong)IBOutlet UITextField *name;
 @property (nonatomic, strong)IBOutlet UITextField *price;
 
+@property (nonatomic, weak)id<LYEditItemViewControllerDelegate> delegate;
+
 @property (nonatomic, strong)LYItem *item;
+
+@end
+
+@protocol LYEditItemViewControllerDelegate <NSObject>
+
+- (void)controller:(UIViewController *)controller didUpdateItem:(LYItem *)item;
 
 @end

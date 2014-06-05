@@ -11,6 +11,7 @@
 #import "LYAddItemViewController.h"
 #import "LYEditItemViewController.h"
 
-@interface LYListViewController : UITableViewController<LYAddItemViewControllerDelegate>
+@interface LYListViewController : UITableViewController
+<LYAddItemViewControllerDelegate, LYEditItemViewControllerDelegate>
 
 @end

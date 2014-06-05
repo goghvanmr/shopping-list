@@ -31,6 +31,11 @@
 {
     [super viewDidLoad];
     
+    self.navigationItem.rightBarButtonItem =
+    [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave
+                                                 target:self
+                                                 action:@selector(didSave:)];
+    
     if (self.item) {
         self.name.text = self.item.name;
         self.price.text = [NSString stringWithFormat:@"%f", self.item.price];
@@ -42,6 +47,17 @@
 {
     [super didReceiveMemoryWarning];
 
+}
+
+#pragma mark - Private Methods
+
+- (void)didSave:(id)sender {
+    self.item.name = self.name.text;
+    self.item.price = [self.price.text floatValue];
+    
+    [self.delegate controller:self didUpdateItem:self.item];
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

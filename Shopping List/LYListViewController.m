@@ -65,6 +65,8 @@ static NSString *CellIdentifier = @"Cell Identifier";
     else if ([segue.identifier isEqualToString:@"edit_item_from_list"]) {
         LYEditItemViewController *destination = (LYEditItemViewController *)segue.destinationViewController;
         destination.item = self.selection;
+        
+        destination.delegate = self;
     }
 }
 
@@ -139,6 +141,19 @@ static NSString *CellIdentifier = @"Cell Identifier";
     [self saveItems];
 }
 
+#pragma mark - LYEditItemViewControllerDelegate
+
+- (void)controller:(UIViewController *)controller didUpdateItem:(LYItem *)item {
+    for (int i = 0; i < [self.items count]; i++) {
+        LYItem *iThItem = [self.items objectAtIndex:i];
+        if ([iThItem.uuid isEqualToString:item.uuid]) {
+            NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:0];
+            [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        }
+    }
+    
+    [self saveItems];
+}
 
 #pragma mark - Private Methods
 
