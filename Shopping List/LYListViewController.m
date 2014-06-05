@@ -12,11 +12,15 @@
 
 @interface LYListViewController ()
 
-@property NSMutableArray *items;
+@property (nonatomic, strong) NSMutableArray *items;
+@property (nonatomic, strong) LYItem *selection;
 
 @end
 
 @implementation LYListViewController
+
+@synthesize items = _items;
+@synthesize selection = _selection;
 
 static NSString *CellIdentifier = @"Cell Identifier";
 
@@ -53,10 +57,15 @@ static NSString *CellIdentifier = @"Cell Identifier";
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    UINavigationController *nc = (UINavigationController *)segue.destinationViewController;
-    LYAddItemViewController *destination = [nc.viewControllers firstObject];
-    
-    destination.delegate = self;
+    if ([segue.identifier isEqualToString:@"add_item_from_list"]) {
+        UINavigationController *nc = (UINavigationController *)segue.destinationViewController;
+        LYAddItemViewController *destination = [nc.viewControllers firstObject];
+        destination.delegate = self;
+    }
+    else if ([segue.identifier isEqualToString:@"edit_item_from_list"]) {
+        LYEditItemViewController *destination = (LYEditItemViewController *)segue.destinationViewController;
+        destination.item = self.selection;
+    }
 }
 
 #pragma mark - NSCoding
@@ -88,7 +97,9 @@ static NSString *CellIdentifier = @"Cell Identifier";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     LYItem *item = [self.items objectAtIndex:[indexPath row]];
+    
     cell.textLabel.text = item.name;
+    cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
     
     return cell;
 }
@@ -103,6 +114,15 @@ static NSString *CellIdentifier = @"Cell Identifier";
         [self.items removeObjectAtIndex:[indexPath row]];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];
         [self saveItems];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
+    LYItem *item = [self.items objectAtIndex:[indexPath row]];
+    
+    if (item) {
+        self.selection = item;
+        [self performSegueWithIdentifier:@"edit_item_from_list" sender:self];
     }
 }
 

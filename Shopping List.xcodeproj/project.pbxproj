@@ -23,6 +23,7 @@
 		6E24E0BF193AC89900543970 /* LYListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E24E0BE193AC89900543970 /* LYListViewController.m */; };
 		6E24E0C2193ACC8700543970 /* LYItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E24E0C1193ACC8700543970 /* LYItem.m */; };
 		6E642AAE193B83020055A293 /* seed.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6E642AAD193B83020055A293 /* seed.plist */; };
+		6EB70B8F1940927E00C3A7D7 /* LYEditItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EB70B8E1940927E00C3A7D7 /* LYEditItemViewController.m */; };
 		6EF57E44193C7028003E89DC /* LYAddItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EF57E43193C7028003E89DC /* LYAddItemViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +60,8 @@
 		6E24E0C0193ACC8700543970 /* LYItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYItem.h; sourceTree = "<group>"; };
 		6E24E0C1193ACC8700543970 /* LYItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYItem.m; sourceTree = "<group>"; };
 		6E642AAD193B83020055A293 /* seed.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = seed.plist; sourceTree = "<group>"; };
+		6EB70B8D1940927E00C3A7D7 /* LYEditItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYEditItemViewController.h; sourceTree = "<group>"; };
+		6EB70B8E1940927E00C3A7D7 /* LYEditItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYEditItemViewController.m; sourceTree = "<group>"; };
 		6EF57E42193C7028003E89DC /* LYAddItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYAddItemViewController.h; sourceTree = "<group>"; };
 		6EF57E43193C7028003E89DC /* LYAddItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYAddItemViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -166,6 +169,8 @@
 			children = (
 				6E24E0BD193AC89900543970 /* LYListViewController.h */,
 				6E24E0BE193AC89900543970 /* LYListViewController.m */,
+				6EB70B8D1940927E00C3A7D7 /* LYEditItemViewController.h */,
+				6EB70B8E1940927E00C3A7D7 /* LYEditItemViewController.m */,
 				6EF57E42193C7028003E89DC /* LYAddItemViewController.h */,
 				6EF57E43193C7028003E89DC /* LYAddItemViewController.m */,
 			);
@@ -279,6 +284,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6EB70B8F1940927E00C3A7D7 /* LYEditItemViewController.m in Sources */,
 				6E24E095193AC70700543970 /* main.m in Sources */,
 				6E24E099193AC70700543970 /* LYAppDelegate.m in Sources */,
 				6EF57E44193C7028003E89DC /* LYAddItemViewController.m in Sources */,

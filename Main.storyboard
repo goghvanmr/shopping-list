@@ -38,6 +38,7 @@
                     <navigationItem key="navigationItem" id="llH-bY-1ey"/>
                     <connections>
                         <segue destination="vfe-0W-LzD" kind="modal" identifier="add_item_from_list" id="t0X-sj-3LE"/>
+                        <segue destination="AfW-8W-5VY" kind="push" identifier="edit_item_from_list" id="T0Z-Gr-5eH"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2vc-bw-UyK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -91,6 +92,43 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ym3-GB-MfX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1199" y="-126"/>
+        </scene>
+        <!--Edit Item View Controller-->
+        <scene sceneID="6S9-8k-3iX">
+            <objects>
+                <viewController id="AfW-8W-5VY" customClass="LYEditItemViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dRo-eI-FDs"/>
+                        <viewControllerLayoutGuide type="bottom" id="ySE-TN-D9h"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lht-Nw-uCX">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jmd-Fy-3RP">
+                                <rect key="frame" x="20" y="96" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Price" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sHB-pi-s6g">
+                                <rect key="frame" x="20" y="139" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="q1P-j3-Wna"/>
+                    <connections>
+                        <outlet property="name" destination="Jmd-Fy-3RP" id="qzB-nL-fC6"/>
+                        <outlet property="price" destination="sHB-pi-s6g" id="csT-BU-oxV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hF9-Zg-NZa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1199" y="587"/>
         </scene>
         <!--Navigation Controller - Item-->
         <scene sceneID="s0F-q0-X5s">

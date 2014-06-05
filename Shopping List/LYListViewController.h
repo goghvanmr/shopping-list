@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "LYAddItemViewController.h"
+#import "LYEditItemViewController.h"
 
 @interface LYListViewController : UITableViewController<LYAddItemViewControllerDelegate>
 
