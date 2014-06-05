@@ -35,9 +35,15 @@ static NSString *CellIdentifier = @"Cell Identifier";
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CellIdentifier];
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
-                                                                                         target:self
-                                                                                         action:@selector(addItem:)];
+    self.navigationItem.leftBarButtonItem =
+    [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                 target:self
+                                                 action:@selector(addItem:)];
+    
+    self.navigationItem.rightBarButtonItem =
+    [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
+                                                 target:self
+                                                 action:@selector(editItem:)];
 }
 
 - (void)didReceiveMemoryWarning
@@ -87,6 +93,19 @@ static NSString *CellIdentifier = @"Cell Identifier";
     return cell;
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+                                            forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self.items removeObjectAtIndex:[indexPath row]];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];
+        [self saveItems];
+    }
+}
+
 #pragma mark - LYAddItemViewControllerDelegate
 
 - (void)controller:(LYAddItemViewController *)controller didSaveItemWithName:(NSString *)name andPrice:(float)price {
@@ -126,9 +145,11 @@ static NSString *CellIdentifier = @"Cell Identifier";
 }
 
 - (void)addItem:(id)sender {
-    // Do Nothing
-    NSLog(@"Add button tapper");
     [self performSegueWithIdentifier:@"add_item_from_list" sender:self];
+}
+
+- (void)editItem:(id)sender {
+    [self.tableView setEditing:![self.tableView isEditing] animated:YES];
 }
 
 @end
