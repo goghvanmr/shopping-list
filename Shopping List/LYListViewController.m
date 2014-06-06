@@ -128,6 +128,24 @@ static NSString *CellIdentifier = @"Cell Identifier";
     }
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    LYItem *item = [self.items objectAtIndex:[indexPath row]];
+    item.inShoppingList = !item.inShoppingList;
+    
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    if (item.inShoppingList) {
+        cell.imageView.image = [UIImage imageNamed:@"checkmark"];
+    }
+    else {
+        cell.imageView.image = nil;
+    }
+    
+    [self saveItems];
+}
+
 #pragma mark - LYAddItemViewControllerDelegate
 
 - (void)controller:(LYAddItemViewController *)controller didSaveItemWithName:(NSString *)name andPrice:(float)price {
