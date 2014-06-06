@@ -14,12 +14,31 @@
 
 @implementation LYShoppingListViewController
 
+static NSString *CellIdentifier = @"Cell Identifier";
+
+@synthesize items = _items;
+@synthesize allItems = _allItems;
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
     }
+    return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    
+    if (self) {
+        self.title = @"Shopping List";
+        
+        [[NSNotificationCenter defaultCenter]addObserver:self
+                                                selector:@selector(updateShoppingList:)
+                                                    name:@"ShoppingListDidChangeNotification"
+                                                  object:nil];
+    }
+    
     return self;
 }
 
@@ -27,17 +46,14 @@
 {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CellIdentifier];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self loadItems];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
@@ -49,7 +65,72 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return [self.items count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    LYItem *item = [self.items objectAtIndex:[indexPath row]];
+    
+    cell.textLabel.text = item.name;
+    
+    return cell;
+}
+
+#pragma mark - Setters and Getters
+
+- (void)setAllItems:(NSArray *)items {
+    if (_allItems != items) {
+        _allItems = items;
+        
+        [self buildShoppingList];
+    }
+}
+
+- (void)setItems:(NSArray *)items {
+    if (_items != items) {
+        _items = items;
+        
+        [self.tableView reloadData];
+    }
+}
+
+#pragma mark - Private Methods
+
+- (void)buildShoppingList {
+    NSMutableArray *buffer = [[NSMutableArray alloc]init];
+    
+    for (int i = 0; i < [self.allItems count]; i++) {
+        LYItem *ithItem = [self.allItems objectAtIndex:i];
+        
+        if ([ithItem inShoppingList]) {
+            [buffer addObject:ithItem];
+        }
+    }
+    
+    self.items = [NSArray arrayWithArray:buffer];
+}
+
+- (void)loadItems {
+    NSString *filePath = [self pathForItems];
+    
+    if ([[NSFileManager defaultManager]fileExistsAtPath:filePath]) {
+        self.allItems = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
+    } else {
+        self.allItems = [NSMutableArray array];
+    }
+}
+
+- (NSString *)pathForItems {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documents = [paths lastObject];
+    
+    return [documents stringByAppendingPathComponent:@"items.plist"];
+}
+
+- (void)updateShoppingList:(NSNotification *)notification {
+    [self loadItems];
 }
 
 @end

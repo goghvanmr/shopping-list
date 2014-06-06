@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+#import "LYItem.h"
+
 @interface LYShoppingListViewController : UITableViewController
+
+@property (nonatomic, strong)NSArray *items;
+@property (nonatomic, strong)NSArray *allItems;
 
 @end

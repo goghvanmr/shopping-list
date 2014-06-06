@@ -53,7 +53,6 @@ static NSString *CellIdentifier = @"Cell Identifier";
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -178,6 +177,8 @@ static NSString *CellIdentifier = @"Cell Identifier";
 - (void)saveItems {
     NSString *filePath = [self pathForItems];
     [NSKeyedArchiver archiveRootObject:self.items toFile:filePath];
+    
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"ShoppingListDidChangeNotification" object:nil];
 }
 
 - (void)loadItems {
