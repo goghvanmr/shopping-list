@@ -37,7 +37,7 @@
 }
 
 - (IBAction)save:(id)sender {
-    [self.delegate controller:self didSaveItemWithName:self.name.text andPrice:[self.price.text floatValue]];
+    [self.delegate controller:self didSaveItemWithName:self.name.text];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }

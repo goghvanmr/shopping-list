@@ -15,13 +15,12 @@
 @property (nonatomic, weak) id<LYAddItemViewControllerDelegate> delegate;
 
 @property (nonatomic, weak) IBOutlet UITextField *name;
-@property (nonatomic, weak) IBOutlet UITextField *price;
 
 @end
 
 
 @protocol LYAddItemViewControllerDelegate <NSObject>
 
-- (void)controller:(LYAddItemViewController *)controller didSaveItemWithName:(NSString *)name andPrice:(float)price;
+- (void)controller:(LYAddItemViewController *)controller didSaveItemWithName:(NSString *)name;
 
 @end

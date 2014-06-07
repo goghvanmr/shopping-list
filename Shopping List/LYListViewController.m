@@ -147,8 +147,8 @@ static NSString *CellIdentifier = @"Cell Identifier";
 
 #pragma mark - LYAddItemViewControllerDelegate
 
-- (void)controller:(LYAddItemViewController *)controller didSaveItemWithName:(NSString *)name andPrice:(float)price {
-    LYItem *item = [LYItem createItemWithName:name andPrice:price];
+- (void)controller:(LYAddItemViewController *)controller didSaveItemWithName:(NSString *)name {
+    LYItem *item = [LYItem createItemWithName:name];
     
     [self.items addObject:item];
     

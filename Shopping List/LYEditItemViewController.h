@@ -15,7 +15,6 @@
 @interface LYEditItemViewController : UIViewController
 
 @property (nonatomic, strong)IBOutlet UITextField *name;
-@property (nonatomic, strong)IBOutlet UITextField *price;
 
 @property (nonatomic, weak)id<LYEditItemViewControllerDelegate> delegate;
 

@@ -15,7 +15,6 @@
 @implementation LYEditItemViewController
 
 @synthesize name = _name;
-@synthesize price = _price;
 @synthesize item = _item;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -38,7 +37,6 @@
     
     if (self.item) {
         self.name.text = self.item.name;
-        self.price.text = [NSString stringWithFormat:@"%f", self.item.price];
     }
 
 }
@@ -53,7 +51,6 @@
 
 - (void)didSave:(id)sender {
     self.item.name = self.name.text;
-    self.item.price = [self.price.text floatValue];
     
     [self.delegate controller:self didUpdateItem:self.item];
     

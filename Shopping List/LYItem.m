@@ -10,12 +10,11 @@
 
 @implementation LYItem
 
-+ (LYItem *)createItemWithName:(NSString *)name andPrice:(float) price {
++ (LYItem *)createItemWithName:(NSString *)name {
     LYItem *item = [[LYItem alloc]init];
     
     item.uuid = [[NSUUID UUID]UUIDString];
     item.name = name;
-    item.price = price;
     item.inShoppingList = NO;
     
     return item;
@@ -26,7 +25,6 @@
 - (void)encodeWithCoder:(NSCoder *)aCoder {
     [aCoder encodeObject:self.uuid forKey:@"uuid"];
     [aCoder encodeObject:self.name forKey:@"name"];
-    [aCoder encodeFloat:self.price forKey:@"price"];
     [aCoder encodeBool:self.inShoppingList forKey:@"inShoppingList"];
 }
 
@@ -36,7 +34,6 @@
     if (self) {
         [self setUuid:[aDecoder decodeObjectForKey:@"uuid"]];
         [self setName:[aDecoder decodeObjectForKey:@"name"]];
-        [self setPrice:[aDecoder decodeFloatForKey:@"price"]];
         [self setInShoppingList:[aDecoder decodeBoolForKey:@"inShoppingList"]];
     }
     

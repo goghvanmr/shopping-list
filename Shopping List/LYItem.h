@@ -12,9 +12,8 @@
 
 @property (nonatomic, strong)NSString *uuid;
 @property (nonatomic, strong)NSString *name;
-@property (nonatomic)float price;
 @property (nonatomic)BOOL inShoppingList;
 
-+ (LYItem *)createItemWithName:(NSString *)name andPrice:(float) price;
++ (LYItem *)createItemWithName:(NSString *)name;
 
 @end

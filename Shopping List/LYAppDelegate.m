@@ -14,12 +14,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-//    [self seedItems];
+    [self seedItems];
     return YES;
 }
 
 - (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [self seedItems];
     return YES;
 }
 
@@ -57,8 +56,7 @@
         for (int i = 0; i < [seedItems count]; i++) {
             NSDictionary *seedItem = [seedItems objectAtIndex:i];
             
-            LYItem *item = [LYItem createItemWithName:[seedItem objectForKey:@"name"]
-                                             andPrice:[[seedItem objectForKey:@"price"]floatValue]];
+            LYItem *item = [LYItem createItemWithName:[seedItem objectForKey:@"name"]];
             
             [items addObject:item];
         }
