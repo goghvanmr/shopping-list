@@ -24,6 +24,7 @@
 		6E621FF81941BD3300C58695 /* LYShoppingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E621FF61941BD3300C58695 /* LYShoppingListViewController.m */; };
 		6E621FF91941BD3300C58695 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E621FF71941BD3300C58695 /* Main.storyboard */; };
 		6E642AAE193B83020055A293 /* seed.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6E642AAD193B83020055A293 /* seed.plist */; };
+		6E8322B719430E14006730F8 /* LYItemHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8322B619430E14006730F8 /* LYItemHelper.m */; };
 		6EB70B8F1940927E00C3A7D7 /* LYEditItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EB70B8E1940927E00C3A7D7 /* LYEditItemViewController.m */; };
 		6EB70B981941B9BF00C3A7D7 /* checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EB70B961941B9BF00C3A7D7 /* checkmark.png */; };
 		6EB70B991941B9BF00C3A7D7 /* checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EB70B971941B9BF00C3A7D7 /* checkmark@2x.png */; };
@@ -65,6 +66,8 @@
 		6E621FF61941BD3300C58695 /* LYShoppingListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYShoppingListViewController.m; sourceTree = "<group>"; };
 		6E621FF71941BD3300C58695 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		6E642AAD193B83020055A293 /* seed.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = seed.plist; sourceTree = "<group>"; };
+		6E8322B519430E14006730F8 /* LYItemHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYItemHelper.h; sourceTree = "<group>"; };
+		6E8322B619430E14006730F8 /* LYItemHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYItemHelper.m; sourceTree = "<group>"; };
 		6EB70B8D1940927E00C3A7D7 /* LYEditItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYEditItemViewController.h; sourceTree = "<group>"; };
 		6EB70B8E1940927E00C3A7D7 /* LYEditItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYEditItemViewController.m; sourceTree = "<group>"; };
 		6EB70B961941B9BF00C3A7D7 /* checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkmark.png; sourceTree = "<group>"; };
@@ -130,10 +133,11 @@
 		6E24E08E193AC70700543970 /* Shopping List */ = {
 			isa = PBXGroup;
 			children = (
-				6E621FF71941BD3300C58695 /* Main.storyboard */,
-				6EB70B9A1941B9C500C3A7D7 /* images */,
+				6E8322B819430E1E006730F8 /* Helpers */,
 				6E24E0C3193ACC8B00543970 /* Models */,
 				6E24E0BC193AC7CA00543970 /* Controllers */,
+				6EB70B9A1941B9C500C3A7D7 /* images */,
+				6E621FF71941BD3300C58695 /* Main.storyboard */,
 				6E24E097193AC70700543970 /* LYAppDelegate.h */,
 				6E24E098193AC70700543970 /* LYAppDelegate.m */,
 				6E24E09A193AC70700543970 /* Images.xcassets */,
@@ -194,6 +198,15 @@
 				6E24E0C1193ACC8700543970 /* LYItem.m */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		6E8322B819430E1E006730F8 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				6E8322B519430E14006730F8 /* LYItemHelper.h */,
+				6E8322B619430E14006730F8 /* LYItemHelper.m */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 		6EB70B9A1941B9C500C3A7D7 /* images */ = {
@@ -310,6 +323,7 @@
 				6E24E099193AC70700543970 /* LYAppDelegate.m in Sources */,
 				6EF57E44193C7028003E89DC /* LYAddItemViewController.m in Sources */,
 				6E24E0BF193AC89900543970 /* LYListViewController.m in Sources */,
+				6E8322B719430E14006730F8 /* LYItemHelper.m in Sources */,
 				6E621FF81941BD3300C58695 /* LYShoppingListViewController.m in Sources */,
 				6E24E0C2193ACC8700543970 /* LYItem.m in Sources */,
 			);

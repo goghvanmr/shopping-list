@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "LYItem.h"
+#import "LYItemHelper.h"
 
 @interface LYShoppingListViewController : UITableViewController
 

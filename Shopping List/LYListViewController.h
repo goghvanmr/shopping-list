@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "LYItemHelper.h"
+
 #import "LYAddItemViewController.h"
 #import "LYEditItemViewController.h"
 

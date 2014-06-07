@@ -48,7 +48,7 @@ static NSString *CellIdentifier = @"Cell Identifier";
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CellIdentifier];
     
-    [self loadItems];
+    self.allItems = [LYItemHelper loadItems];
 }
 
 - (void)didReceiveMemoryWarning
@@ -112,16 +112,6 @@ static NSString *CellIdentifier = @"Cell Identifier";
     self.items = [NSArray arrayWithArray:buffer];
 }
 
-- (void)loadItems {
-    NSString *filePath = [self pathForItems];
-    
-    if ([[NSFileManager defaultManager]fileExistsAtPath:filePath]) {
-        self.allItems = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
-    } else {
-        self.allItems = [NSMutableArray array];
-    }
-}
-
 - (NSString *)pathForItems {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documents = [paths lastObject];
@@ -130,7 +120,7 @@ static NSString *CellIdentifier = @"Cell Identifier";
 }
 
 - (void)updateShoppingList:(NSNotification *)notification {
-    [self loadItems];
+    self.allItems = [LYItemHelper loadItems];
 }
 
 @end

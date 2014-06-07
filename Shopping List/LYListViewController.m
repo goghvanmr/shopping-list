@@ -76,7 +76,7 @@ static NSString *CellIdentifier = @"Cell Identifier";
     
     if (self) {
         self.title = @"Items";
-        [self loadItems];
+        self.items = [NSMutableArray arrayWithArray:[LYItemHelper loadItems]];
     }
     
     return self;
@@ -175,27 +175,9 @@ static NSString *CellIdentifier = @"Cell Identifier";
 #pragma mark - Private Methods
 
 - (void)saveItems {
-    NSString *filePath = [self pathForItems];
-    [NSKeyedArchiver archiveRootObject:self.items toFile:filePath];
+    [LYItemHelper saveItems:self.items];
     
     [[NSNotificationCenter defaultCenter]postNotificationName:@"ShoppingListDidChangeNotification" object:nil];
-}
-
-- (void)loadItems {
-    NSString *filePath = [self pathForItems];
-    
-    if ([[NSFileManager defaultManager]fileExistsAtPath:filePath]) {
-        self.items = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
-    } else {
-        self.items = [NSMutableArray array];
-    }
-}
-
-- (NSString *)pathForItems {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documents = [paths lastObject];
-    
-    return [documents stringByAppendingPathComponent:@"items.plist"];
 }
 
 - (void)addItem:(id)sender {
