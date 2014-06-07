@@ -10,7 +10,7 @@
 
 @interface LYItemHelper : NSObject
 
-+ (NSArray *)loadItems;
++ (NSArray *)loadItemsFromFile;
 + (void)saveItems:(NSArray *)items;
 
 @end

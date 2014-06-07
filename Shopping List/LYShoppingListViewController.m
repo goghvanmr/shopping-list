@@ -16,8 +16,8 @@
 
 static NSString *CellIdentifier = @"Cell Identifier";
 
+@synthesize shoppingList = _shoppingList;
 @synthesize items = _items;
-@synthesize allItems = _allItems;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -48,7 +48,7 @@ static NSString *CellIdentifier = @"Cell Identifier";
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CellIdentifier];
     
-    self.allItems = [LYItemHelper loadItems];
+    self.items = [LYItemHelper loadItemsFromFile];
 }
 
 - (void)didReceiveMemoryWarning
@@ -65,14 +65,13 @@ static NSString *CellIdentifier = @"Cell Identifier";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.items count];
+    return [self.shoppingList count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    LYItem *item = [self.items objectAtIndex:[indexPath row]];
-    
+    LYItem *item = [self.shoppingList objectAtIndex:[indexPath row]];
     cell.textLabel.text = item.name;
     
     return cell;
@@ -80,17 +79,17 @@ static NSString *CellIdentifier = @"Cell Identifier";
 
 #pragma mark - Setters and Getters
 
-- (void)setAllItems:(NSArray *)items {
-    if (_allItems != items) {
-        _allItems = items;
+- (void)setItems:(NSArray *)items {
+    if (_items != items) {
+        _items = items;
         
         [self buildShoppingList];
     }
 }
 
-- (void)setItems:(NSArray *)items {
-    if (_items != items) {
-        _items = items;
+- (void)setShoppingList:(NSArray *)items {
+    if (_shoppingList != items) {
+        _shoppingList = items;
         
         [self.tableView reloadData];
     }
@@ -101,26 +100,19 @@ static NSString *CellIdentifier = @"Cell Identifier";
 - (void)buildShoppingList {
     NSMutableArray *buffer = [[NSMutableArray alloc]init];
     
-    for (int i = 0; i < [self.allItems count]; i++) {
-        LYItem *ithItem = [self.allItems objectAtIndex:i];
+    for (int i = 0; i < [self.items count]; i++) {
+        LYItem *ithItem = [self.items objectAtIndex:i];
         
         if ([ithItem inShoppingList]) {
             [buffer addObject:ithItem];
         }
     }
     
-    self.items = [NSArray arrayWithArray:buffer];
-}
-
-- (NSString *)pathForItems {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documents = [paths lastObject];
-    
-    return [documents stringByAppendingPathComponent:@"items.plist"];
+    self.shoppingList = [NSArray arrayWithArray:buffer];
 }
 
 - (void)updateShoppingList:(NSNotification *)notification {
-    self.allItems = [LYItemHelper loadItems];
+    self.items = [LYItemHelper loadItemsFromFile];
 }
 
 @end

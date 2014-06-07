@@ -76,7 +76,7 @@ static NSString *CellIdentifier = @"Cell Identifier";
     
     if (self) {
         self.title = @"Items";
-        self.items = [NSMutableArray arrayWithArray:[LYItemHelper loadItems]];
+        self.items = [NSMutableArray arrayWithArray:[LYItemHelper loadItemsFromFile]];
     }
     
     return self;

@@ -12,7 +12,7 @@
 
 @implementation LYItemHelper
 
-+ (NSArray *)loadItems {
++ (NSArray *)loadItemsFromFile {
     NSString *filePath = [self pathForItems];
     
     if ([[NSFileManager defaultManager]fileExistsAtPath:filePath]) {
