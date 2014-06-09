@@ -31,7 +31,7 @@ static NSString *CellIdentifier = @"Cell Identifier";
     self = [super initWithCoder:aDecoder];
     
     if (self) {
-        self.title = @"Shopping List";
+        self.title = @"购物清单";
         
         [[NSNotificationCenter defaultCenter]addObserver:self
                                                 selector:@selector(updateShoppingList:)
@@ -49,6 +49,11 @@ static NSString *CellIdentifier = @"Cell Identifier";
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CellIdentifier];
     
     self.items = [LYItemHelper loadItemsFromFile];
+    
+    self.navigationItem.rightBarButtonItem =
+    [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                 target:self
+                                                 action:@selector(addItems:)];
 }
 
 - (void)didReceiveMemoryWarning
@@ -113,6 +118,10 @@ static NSString *CellIdentifier = @"Cell Identifier";
 
 - (void)updateShoppingList:(NSNotification *)notification {
     self.items = [LYItemHelper loadItemsFromFile];
+}
+
+- (void)addItems:(id)send {
+    [self performSegueWithIdentifier:@"from_shopping_list_to_item_list" sender:self];
 }
 
 @end

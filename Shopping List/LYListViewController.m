@@ -40,14 +40,15 @@ static NSString *CellIdentifier = @"Cell Identifier";
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CellIdentifier];
     
     self.navigationItem.leftBarButtonItem =
-    [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+    [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
                                                  target:self
-                                                 action:@selector(addItem:)];
+                                                 action:@selector(cancel:)];
     
     self.navigationItem.rightBarButtonItem =
-    [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
+    [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                                  target:self
-                                                 action:@selector(editItem:)];
+                                                 action:@selector(done:)];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -186,6 +187,14 @@ static NSString *CellIdentifier = @"Cell Identifier";
 
 - (void)editItem:(id)sender {
     [self.tableView setEditing:![self.tableView isEditing] animated:YES];
+}
+
+- (void)cancel:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)done:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
