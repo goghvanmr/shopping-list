@@ -12,7 +12,7 @@
 
 @interface LYListViewController ()
 
-@property (nonatomic, strong) NSMutableArray *items;
+@property (nonatomic, weak) NSArray *items;
 @property (nonatomic, strong) LYItem *selection;
 
 @end
@@ -77,7 +77,7 @@ static NSString *CellIdentifier = @"Cell Identifier";
     
     if (self) {
         self.title = @"Items";
-        self.items = [NSMutableArray arrayWithArray:[LYItemHelper loadItemsFromFile]];
+        self.items = [LYItemHelper items];
     }
     
     return self;
@@ -116,14 +116,14 @@ static NSString *CellIdentifier = @"Cell Identifier";
     return YES;
 }
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
-                                            forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.items removeObjectAtIndex:[indexPath row]];
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];
-        [self saveItems];
-    }
-}
+//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+//                                            forRowAtIndexPath:(NSIndexPath *)indexPath {
+//    if (editingStyle == UITableViewCellEditingStyleDelete) {
+//        [self.items removeObjectAtIndex:[indexPath row]];
+//        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];
+//        [self saveItems];
+//    }
+//}
 
 //TODO: remove this funciton
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
@@ -149,22 +149,20 @@ static NSString *CellIdentifier = @"Cell Identifier";
     else {
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
-    
-//    [self saveItems];
 }
 
 #pragma mark - LYAddItemViewControllerDelegate
 
-- (void)controller:(LYAddItemViewController *)controller didSaveItemWithName:(NSString *)name {
-    LYItem *item = [LYItem createItemWithName:name];
-    
-    [self.items addObject:item];
-    
-    NSIndexPath *newIndexPath = [NSIndexPath indexPathForItem:([self.items count]-1) inSection:0];
-    [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationNone];
-    
-    [self saveItems];
-}
+//- (void)controller:(LYAddItemViewController *)controller didSaveItemWithName:(NSString *)name {
+//    LYItem *item = [LYItem createItemWithName:name];
+//    
+//    [self.items addObject:item];
+//    
+//    NSIndexPath *newIndexPath = [NSIndexPath indexPathForItem:([self.items count]-1) inSection:0];
+//    [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+//    
+//    [self saveItems];
+//}
 
 #pragma mark - LYEditItemViewControllerDelegate
 
@@ -183,7 +181,7 @@ static NSString *CellIdentifier = @"Cell Identifier";
 #pragma mark - Private Methods
 
 - (void)saveItems {
-    [LYItemHelper saveItems:self.items];
+    [LYItemHelper setItems:self.items];
     
     [[NSNotificationCenter defaultCenter]postNotificationName:@"ShoppingListDidChangeNotification" object:nil];
 }
@@ -194,6 +192,7 @@ static NSString *CellIdentifier = @"Cell Identifier";
 
 - (void)done:(id)sender {
     [self saveItems];
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

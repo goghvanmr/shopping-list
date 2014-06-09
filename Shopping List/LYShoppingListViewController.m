@@ -48,7 +48,7 @@ static NSString *CellIdentifier = @"Cell Identifier";
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CellIdentifier];
     
-    self.items = [LYItemHelper loadItemsFromFile];
+    self.items = [LYItemHelper items];
     
     self.navigationItem.rightBarButtonItem =
     [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
@@ -85,11 +85,11 @@ static NSString *CellIdentifier = @"Cell Identifier";
 #pragma mark - Setters and Getters
 
 - (void)setItems:(NSArray *)items {
-    if (_items != items) {
+    if (!_items) {
         _items = items;
-        
-        [self buildShoppingList];
     }
+    
+    [self buildShoppingList];
 }
 
 - (void)setShoppingList:(NSArray *)items {
@@ -117,7 +117,7 @@ static NSString *CellIdentifier = @"Cell Identifier";
 }
 
 - (void)updateShoppingList:(NSNotification *)notification {
-    self.items = [LYItemHelper loadItemsFromFile];
+    self.items = [LYItemHelper items];
 }
 
 - (void)addItems:(id)send {

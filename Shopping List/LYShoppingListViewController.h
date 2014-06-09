@@ -14,6 +14,6 @@
 @interface LYShoppingListViewController : UITableViewController
 
 @property (nonatomic, strong)NSArray *shoppingList;
-@property (nonatomic, strong)NSArray *items;
+@property (nonatomic, weak)NSArray *items;
 
 @end
