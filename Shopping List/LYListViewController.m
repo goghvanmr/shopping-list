@@ -101,7 +101,13 @@ static NSString *CellIdentifier = @"Cell Identifier";
     LYItem *item = [self.items objectAtIndex:[indexPath row]];
     
     cell.textLabel.text = item.name;
-    cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+    
+    if (item.inShoppingList) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
+    else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
     
     return cell;
 }
@@ -119,6 +125,7 @@ static NSString *CellIdentifier = @"Cell Identifier";
     }
 }
 
+//TODO: remove this funciton
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
     LYItem *item = [self.items objectAtIndex:[indexPath row]];
     
@@ -137,13 +144,13 @@ static NSString *CellIdentifier = @"Cell Identifier";
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     
     if (item.inShoppingList) {
-        cell.imageView.image = [UIImage imageNamed:@"checkmark"];
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
     else {
-        cell.imageView.image = nil;
+        cell.accessoryType = UITableViewCellAccessoryNone;
     }
     
-    [self saveItems];
+//    [self saveItems];
 }
 
 #pragma mark - LYAddItemViewControllerDelegate
@@ -181,19 +188,12 @@ static NSString *CellIdentifier = @"Cell Identifier";
     [[NSNotificationCenter defaultCenter]postNotificationName:@"ShoppingListDidChangeNotification" object:nil];
 }
 
-- (void)addItem:(id)sender {
-    [self performSegueWithIdentifier:@"add_item_from_list" sender:self];
-}
-
-- (void)editItem:(id)sender {
-    [self.tableView setEditing:![self.tableView isEditing] animated:YES];
-}
-
 - (void)cancel:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)done:(id)sender {
+    [self saveItems];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
